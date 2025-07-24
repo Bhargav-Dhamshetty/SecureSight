@@ -13,7 +13,7 @@ const prisma = new client_1.PrismaClient();
 const PORT = 3001; // Changed from 5000 to 3001
 // Enhanced CORS - must come BEFORE other middleware
 app.use((0, cors_1.default)({
-    origin: ['http://localhost:3000', 'http://localhost:3001'],
+    origin: ['http://localhost:3000', 'http://localhost:3001','https://secure-sight-six.vercel.app'],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
