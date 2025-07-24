@@ -9,9 +9,14 @@ const app = express();
 const prisma = new PrismaClient();
 const PORT = 3001; // Changed from 5000 to 3001
 
-// Enhanced CORS - must come BEFORE other middleware
+// Enhanced CORS - Production ready
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001','https://secure-sight-six.vercel.app'],
+  origin: process.env.NODE_ENV === 'production' 
+    ? [
+        'https://secure-sight-six.vercel.app',
+        'https://securesight-a3xw.onrender.com'
+      ]
+    : ['http://localhost:3000', 'http://localhost:3001'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
